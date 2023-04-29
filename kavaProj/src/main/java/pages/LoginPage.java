@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import libs.TestData;
 import libs.Util;
 import org.assertj.core.api.SoftAssertions;
@@ -51,6 +52,7 @@ public class LoginPage extends ParentPage {
         return "/";
     }
 
+    @Step
     public void openLoginPage() {
         try {
             webDriver.get(base_url + getRelativeURL());
@@ -62,6 +64,7 @@ public class LoginPage extends ParentPage {
         }
     }
 
+    @Step
     public void enterUserNameIntoInputLogin(String username) {
         //try {
         //WebElement inputUsername = webDriver.findElement(By.xpath(".//input[@name='username' and @placeholder='Username']"));
@@ -74,6 +77,7 @@ public class LoginPage extends ParentPage {
         enterTextInToElement(inputUserName, username);
     }
 
+    @Step
     public void enterPasswordIntoInputPassword(String password) {
         try {
             //WebElement inputPassword = webDriver.findElement(By.xpath(".//input[@placeholder='Password']"));
@@ -86,45 +90,47 @@ public class LoginPage extends ParentPage {
         enterTextInToElement(inputPassword, password);
     }
 
+    @Step
     public void clickOnButtonLogin() {
         clickOnElement(buttonLogin);
     }
 
 
+    @Step
     public boolean isSignInButtonDisplayed() {
         return isElementPresented(signInButton);
     }
 
-
+    @Step
     public HomePage fillingLoginFormWithValidCred() {
         enterUserNameIntoInputLogin(TestData.VALID_LOGIN);
         enterPasswordIntoInputPassword(TestData.VALID_PASSWORD);
         clickOnButtonLogin();
         return new HomePage(webDriver);
     }
-
+    @Step
     public LoginPage enterUserNameToTheRegistrationField(String username) {
         enterTextInToElement(usernameInputRegistrationField, username);
         return this;
     }
-
+    @Step
     public LoginPage enterEmailToTheRegistrationField(String email) {
         enterTextInToElement(emailInputRegistrationField, email);
         return this;
     }
-
+    @Step
     public LoginPage enterPasswordToTheRegistrationField(String password) {
         enterTextInToElement(passwordRegistrationInputField, password);
         return this;
     }
-
+    @Step
     public boolean checkErrorMessageWithText(String enterTextError) {
         Assert.assertTrue("Element is not displayed", isElementDisplayed(errorMessageLocator, enterTextError));
 
         return true;
     }
 
-
+    @Step
     public LoginPage checkErrorMessages(String expectedErrors) {
         //error1,error2, -> array[0] = error1, array[1] = error2
         String[] expectedErrorsArray = expectedErrors.split(",");

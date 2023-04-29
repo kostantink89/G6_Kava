@@ -16,7 +16,7 @@ public class MyProfilePage extends ParentPage {
     @FindBy(xpath = ".//h2")
     private WebElement userVisibility;
 
-    @FindBy(xpath = ".//div[text()='Post successfully deleted']")
+    @FindBy(xpath = ".//div[text()='Post successfully deleted.']")
     private WebElement successDeletePostMessage;
 
 

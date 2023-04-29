@@ -1,7 +1,0 @@
-#LoginPage
-
-loginPage.input.userName=.//*[@name='userName']
-
-
-#HomePage
-

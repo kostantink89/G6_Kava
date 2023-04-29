@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import libs.ConfigProperties;
 import org.aeonbits.owner.ConfigFactory;
 import org.apache.log4j.Logger;
@@ -36,6 +37,7 @@ public class CommonActionsWithElements {
         webDriverWait15 = new WebDriverWait(webDriver, Duration.ofSeconds(configProperties.TIME_FOR_EXPLICIT_WAIT_HIGH()));
     }
 
+    @Step
     protected void enterTextInToElement(WebElement webElement, String text) {
         try {
             webDriverWait15.until(ExpectedConditions.visibilityOf(webElement));
@@ -48,7 +50,7 @@ public class CommonActionsWithElements {
 
     }
 
-
+    @Step
     protected void clickOnElement(WebElement webElement) {
         try {
             webDriverWait10.until(ExpectedConditions.elementToBeClickable(webElement));
@@ -61,6 +63,7 @@ public class CommonActionsWithElements {
 
     }
 
+    @Step
     protected void clickOnElement(String xpath) {
         try {
             clickOnElement(webDriver.findElement(By.xpath(xpath)));
@@ -69,7 +72,7 @@ public class CommonActionsWithElements {
         }
     }
 
-
+    @Step
     public static boolean isElementPresented(WebElement element) {
         try {
             return element.isDisplayed();
@@ -80,6 +83,7 @@ public class CommonActionsWithElements {
 
     }
 
+    @Step
     protected boolean isElementDisplayed(String locator, String errorInfo) {
         try {
             WebElement requiredLocator = webDriver.findElement(By.xpath(String.format(locator, errorInfo)));
@@ -90,7 +94,7 @@ public class CommonActionsWithElements {
         }
     }
 
-
+    @Step
     protected boolean isElementDisplayed(WebElement webElement) {
         try {
             boolean state = webElement.isDisplayed();
@@ -108,7 +112,7 @@ public class CommonActionsWithElements {
         }
     }
 
-
+    @Step
     protected void selectTextInDropDown(WebElement dropDown, String visibleText) {
         try {
             Select select = new Select(dropDown);
@@ -119,6 +123,7 @@ public class CommonActionsWithElements {
         }
     }
 
+    @Step
     protected void selectValueInDropDown(WebElement dropDownOptions, String value) {
         try {
             Select select = new Select(dropDownOptions);
@@ -136,6 +141,7 @@ public class CommonActionsWithElements {
         }
     }
 
+    @Step
     private String getElementName(WebElement webElement) {
         try {
             return webElement.getAccessibleName();
